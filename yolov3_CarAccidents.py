@@ -46,12 +46,12 @@ dataset_path = glob.glob(data_dir+"*/") 		#reading all sub-directories in folder
 print('Sub-directories',dataset_path)
 
 # derive the paths to the YOLO weights and model configuration
-weightsPath = os.path.sep.join(['yolo-coco/weights', "yolov3.weights"])
-configPath = os.path.sep.join(['yolo-coco/cfg', "yolov3.cfg"])
+weightsPath = '/content/YOLOv3-Car-Accident-Detection/yolo-coco/cfg/yolov3.cfg'
+configPath = '/content/YOLOv3-Car-Accident-Detection/yolo-coco/weights/yolov3.weights'
 
 # load our YOLO object detector trained on COCO dataset (80 classes)
 print("[INFO] loading YOLO from disk...")
-net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
+net = cv2.dnn.readNet(weightsPath, configPath)
 
 yolov3 = YOLOv3(thr_param, conf_param, [2,3,5,7], net, use = 'tracking')
 
